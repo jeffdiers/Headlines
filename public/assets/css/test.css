@@ -106,5 +106,13 @@ read{
   border: solid 2px black;
 }
 .gif{
-  width: 90%;
+  width: 60%;
+}
+.pray{
+  margin: auto;
+  width: 50%;
+}
+.em-pray{
+  height: 150px;
+  width: 150px;
 }
