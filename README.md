@@ -5,6 +5,7 @@ I started with one idea ended up with a totally different product. I'm guessing 
 
 
 enjoy...
+https://q1-project-4883f.firebaseapp.com
 
 
 ###thinking out loud

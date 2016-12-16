@@ -100,6 +100,7 @@ function getGifEmotion(urlInput, i){
       obj = data.docEmotions
       var emotion = Object.keys(obj).reduce(function(a, b){ return obj[a] > obj[b] ? a : b });
       emotion = "this makes me feel "+emotion
+      
       console.log(emotion);
       $.get("https://api.giphy.com/v1/gifs/translate?s="+emotion+"&api_key=dc6zaTOxFJmzC", function(e){
         gif = e.data.images.original.url
