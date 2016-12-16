@@ -8,71 +8,74 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    <link rel="stylesheet" href="assets/css/test.css">
+    <script src="assets/js/test.js"></script>
 
-    <script src="assets/js/new.js"></script>
 
-    <link rel="stylesheet" href="assets/css/main.css">
-    <title>Headlines</title>
+    <title>Headlines Test</title>
   </head>
-
   <body>
-    <header>
-      <div class="black-line"></div>
-      <nav class="white grey-text text-darken-4 z-depth-0">
-        <div class="nav-wrapper margin">
-          <a href="#!" class="brand-logo grey-text text-darken-4">Headlines</a>
-          <ul class="right hide-on-med-and-down">
-            <li><a href="sass.html"><i class="material-icons grey-text text-darken-4">search</i></a></li>
-            <li><a href="badges.html"><i class="material-icons grey-text text-darken-4">view_module</i></a></li>
-            <li><a href="collapsible.html"><i class="material-icons grey-text text-darken-4">refresh</i></a></li>
-            <li><a href="mobile.html"><i class="material-icons grey-text text-darken-4">more_vert</i></a></li>
-          </ul>
-        </div>
-      </nav>
-      <div id="index-banner">
-        <div class="section ">
-          <br>
-          <br>
-          <br>
-          <div>
-            <h1 class="header center black-text">Just Headlines</h1>
-            <div class="row center container">
-              <h5 class="header col s12 light">Read the top articles from all around the world, all in one place.</h5>
+    <div class="border container">
+    <!-- <div class="black-line"></div> -->
+    <nav class="white grey-text text-darken-4 z-depth-0 ">
+      <div class="nav-wrapper ">
+        <a href="#!" class="brand-logo grey-text text-darken-4 logo">Headlines</a>
+        <ul class="right hide-on-med-and-down">
+          <!-- <li class="border-left"><a href="sass.html"><i class="material-icons grey-text text-darken-4">search</i></a></li>
+          <li><a href="badges.html"><i class="material-icons grey-text text-darken-4">view_module</i></a></li>
+          <li><a href="collapsible.html"><i class="material-icons grey-text text-darken-4">refresh</i></a></li>
+          <li><a href="mobile.html"><i class="material-icons grey-text text-darken-4">more_vert</i></a></li> -->
+          <form class="border-left padding-10">
+            <div class="">
+              <div class="input-field">
+                <select name="source">
+                  <option value="" disabled selected>Select news source</option>
+                  <option value="https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=f6bb4aacff9f4af7a3669348fcb85237">ESPN</option>
+                  <option value="https://newsapi.org/v1/articles?source=national-geographic&sortBy=top&apiKey=f6bb4aacff9f4af7a3669348fcb85237">National Geographic</option>
+                  <option value="https://newsapi.org/v1/articles?source=the-new-york-times&sortBy=top&apiKey=f6bb4aacff9f4af7a3669348fcb85237">New York Times</option>
+                  <option value="https://newsapi.org/v1/articles?source=buzzfeed&sortBy=top&apiKey=f6bb4aacff9f4af7a3669348fcb85237">Buzzfeed</option>
+                  <option value="https://newsapi.org/v1/articles?source=entertainment-weekly&sortBy=top&apiKey=f6bb4aacff9f4af7a3669348fcb85237">Entertainment Weekly</option>
+                  <option value="https://newsapi.org/v1/articles?source=mtv-news&sortBy=latest&apiKey=f6bb4aacff9f4af7a3669348fcb85237">MTV News</option>
+                </select>
+                <label></label>
+              </div>
             </div>
-            <div class="row center">
-              <a href="" class="waves-effect waves-light btn">Read the News</a>
-            </div>
-            </div>
+          </form>
+        </ul>
+      </div>
+    </nav>
+    <!-- <div class="black-line-divider"></div> -->
+</div>
+
+
+    <!-- <div class="container row" id="showitems">
+      <h1>Watch Baby Spiders Emerge From Mysterious "Silkhenge" Structures</h1>
+
+      <div class="col s8">
+        <div class="border img-container gutter">
+          <div class="bg-img" style="background-image: url(http://news.nationalgeographic.com/content/dam/news/rights-exempt/fair-use-screenshots/spider.ngsversion.1481821646343.jpg)">
           </div>
         </div>
       </div>
-  </header>
-  <main>
-    <div class="container">
-      <div class="row">
-    <form class="">
-      <div class="">
-        <div class="input-field col s12">
-          <select name="source">
-            <option value="" disabled selected>Choose your option</option>
-            <option value="https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=f6bb4aacff9f4af7a3669348fcb85237">ESPN</option>
-            <option value="https://newsapi.org/v1/articles?source=national-geographic&sortBy=top&apiKey=f6bb4aacff9f4af7a3669348fcb85237">National Geographic</option>
-            <option value="https://newsapi.org/v1/articles?source=the-new-york-times&sortBy=top&apiKey=f6bb4aacff9f4af7a3669348fcb85237">New York Times</option>
-            <option value="https://newsapi.org/v1/articles?source=buzzfeed&sortBy=top&apiKey=f6bb4aacff9f4af7a3669348fcb85237">Buzzfeed</option>
-            <option value="https://newsapi.org/v1/articles?source=entertainment-weekly&sortBy=top&apiKey=f6bb4aacff9f4af7a3669348fcb85237">Entertainment Weekly</option>
-            <option value="https://newsapi.org/v1/articles?source=mtv-news&sortBy=latest&apiKey=f6bb4aacff9f4af7a3669348fcb85237">MTV News</option>
-          </select>
-          <label>Materialize Select</label>
+      <div class="col s4">
+        <div class="border headline-box">
+          <div class="padding-20"><h5>Description</h5><p>The first video ever filmed of the odd arachnid's "birth" may provide clues as to what species it is—and why it builds silky towers.</p>
+
+          </div>
+          <a href="google.com" class="">
+            <div class="header-box link-container valign-wrapper"><h5 class="valign center" style="width: 100%">read</h5>
+            </div>
+
+          </div>
+        </a>
+          <!-- <div class="header-box flex-row valign-wrapper">
+            <h5 class="valign center " style="width: 100%;">read article</h5>
+          </div> -->
         </div>
       </div>
-    </form>
-  </div>
-  </div>
-  <div class="img-card-main s12 row ">
-  </div
-        <!-- Append gifs here -->
-</main>
-
-
+    </div>
+    <!-- <div class="black-line-divider"></div> -->
+    <div class="img-card-main s12 row ">
+    </div>
   </body>
 </html>
