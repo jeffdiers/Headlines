@@ -52,7 +52,7 @@ function getObject(url){
       // }
       for (var i = 0; i < art.length-1; i++){
         console.log(art);
-        var revealSub = $('<div class="col s8  show">'+
+        var revealSub = $('<div class="col s8 show">'+
         '<div class="card hoverable sticky-action">'+
         '<div class="card-image waves-effect waves-block waves-light">'+
         '<img class="activator" src="'+art[i].urlToImage+'">'+
