@@ -21,9 +21,32 @@ body{
 .logo{
   margin-left: 8px;
 }
-nav ul li:hover {
+
+/*dropdown-content*/
+.dropdown-content li:nth-of-type(2):hover {
    background-color: red;
 }
+.dropdown-content li:nth-of-type(3):hover {
+   background-color: yellow;
+}
+.dropdown-content li:nth-of-type(4):hover {
+   background-color: green;
+}
+.dropdown-content li:nth-of-type(5):hover {
+   background-color: purple;
+}
+.dropdown-content li:nth-of-type(6):hover {
+   background-color: orange;
+}
+.dropdown-content li:nth-of-type(7):hover {
+   background-color: blue;
+}
+.dropdown-content li:nth-of-type(8):hover {
+   background-color: pink;
+}
+
+
+
 .select-wrapper input.select-dropdown{
   border: none;
 }
@@ -64,14 +87,11 @@ nav ul li:hover {
   background-position: center;
   /*background-image: url("http://news.nationalgeographic.com/content/dam/news/rights-exempt/fair-use-screenshots/spider.ngsversion.1481821646343.jpg");*/
 }
-.img-container{
-  position: relative;
-  height: 300px;
-}
 
-.gutter{
+
+/*.gutter{
   margin-right: 30px;
-}
+}*/
 .padding-20{
   padding-left: 20px;
   padding-right: 20px;
@@ -113,6 +133,28 @@ read{
   width: 50%;
 }
 .em-pray{
-  height: 150px;
-  width: 150px;
+  height: 50px;
+  width: 50px;
+}
+@media (min-width: 415px){
+  .img-container{
+    position: relative;
+    height: 300px;
+  }
+}
+.img-container{
+  position: relative;
+  height: 300px;
+}
+@media (max-width: 414px){
+
+  .img-container{
+    position: relative;
+    height: 150px;
+  }
+}
+@media (min-width: 992px){
+  .gutter{
+    margin-right: 30px;
+  }
 }

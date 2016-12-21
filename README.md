@@ -1,8 +1,17 @@
 # Q1-Project
 
-##Problems
+##introduction
 I started with one idea ended up with a totally different product. I'm guessing this if okay because my project shows mastery in many skills. I ended up with an app that gathers top stories from news sites all over the world, displays an image, description, author, and link to the article. I also added a feature that matched the emotion conveyed in the article to a gif.
 
+###The Problem
+a simple news source to see top stories from sources around the world
+###The Technology
+alchemy nlp api
+giphy api
+news api
+
+###The challenge
+I had an idea for adding a gif to the headlines that matched the emotion and keywords of the articles. The challenge was finding how to display the gif that fit with my design.
 
 enjoy...
 https://q1-project-4883f.firebaseapp.com

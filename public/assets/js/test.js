@@ -9,12 +9,12 @@ $(document).ready(function(){
     $('.img-card-main').html('')
     getObject($input)
   })
-  $(".click").click(function(){
-    console.log("great success!");
-  })
-
-
-
+  // $('.small').on('change', function(event){
+  //   event.preventDefault()
+  //   var $input = $('select[name=source]').val()
+  //   $('.img-card-main').html('')
+  //   getObject($input)
+  // })
 })
 
 
@@ -31,7 +31,7 @@ function getObject(url){
       // var url = art[i].url
       // var description = art[i].description
 
-      for (var i = 0; i < art.length-1; i++){
+      for (var i = 0; i < art.length-2; i++){
         var date = Date(art[i].publishedAt)
         // var month = date.getMonth()
         // var day = date.getDate()
@@ -40,15 +40,15 @@ function getObject(url){
         console.log();
         console.log();
         var revealSub = $('<div class="container row">'+
-      '<h1>'+art[i].title+'</h1>'+
-      '<div class="col s8">'+
+      '<h4>'+art[i].title+'</h4>'+
+      '<div class="col s12 l8">'+
       '<div class="border img-container gutter clickMe">'+
       '<div class="bg-img show" style="background-image: url('+art[i].urlToImage+')">'+
       '</div>'+
       '</div>'+
       '</div>'+
-      '<div class="col s4">'+
-      '<div class="border headline-box">'+
+      '<div class="col s12 l4">'+
+      '<div class="border headline-box ">'+
       '<div class="padding-20"><h5>Description</h5><p>'+art[i].description+'</p>'+
       '<div id="giphy-here'+i+'"></div>'+
       '<div id="author-here'+i+'"></div>'+
@@ -64,7 +64,7 @@ function getObject(url){
         revealSub.appendTo('.img-card-main')
         author(art[i].author, i)
         getGifEmotion(art[i].url, i)
-        // getGifTitle(art[i].title, i)
+        getGifTitle(art[i].title, i)
 
       }
 
@@ -100,7 +100,7 @@ function getGifEmotion(urlInput, i){
       obj = data.docEmotions
       var emotion = Object.keys(obj).reduce(function(a, b){ return obj[a] > obj[b] ? a : b });
       emotion = "this makes me feel "+emotion
-      
+
       console.log(emotion);
       $.get("https://api.giphy.com/v1/gifs/translate?s="+emotion+"&api_key=dc6zaTOxFJmzC", function(e){
         gif = e.data.images.original.url
