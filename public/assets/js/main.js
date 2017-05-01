@@ -1,118 +1,128 @@
 $(document).ready(function(){
-  $('#textarea1').val('');
-  $('#textarea1').trigger('autoresize');
+  console.log();
   $('select').material_select();
+
 
   $('select').on('change', function(event){
     event.preventDefault()
     var $input = $('select[name=source]').val()
-    getHeadlines($input)
-    // submitData(articleObj.articleURL)
-    console.log();
-    $('#link').html('')
-    getGif("moon")
+    $('.img-card-main').html('')
+    getObject($input)
   })
-
+  // $('.small').on('change', function(event){
+  //   event.preventDefault()
+  //   var $input = $('select[name=source]').val()
+  //   $('.img-card-main').html('')
+  //   getObject($input)
+  // })
 })
 
-// var articleObj = {
-//   articleURL: "",
-//   gifURL: "",
-//   concept: "",
-//   keyword: "",
-// }
 
-//top headlines for ESPN https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=f6bb4aacff9f4af7a3669348fcb85237
-//national geo https://newsapi.org/v1/articles?source=national-geographic&sortBy=top&apiKey=f6bb4aacff9f4af7a3669348fcb85237
-//NY times https://newsapi.org/v1/articles?source=the-new-york-times&sortBy=top&apiKey=f6bb4aacff9f4af7a3669348fcb85237
-function getHeadlines(urlBase){
+
+function getObject(url){
   $.ajax({
-    url: urlBase,
+    url: url,
     type: 'GET',
     success: function(data){
       var art = data.articles
-      for (var i = 0; i < art.length-1; i++) {
-        var url = art[i].url
-        var $a = $('<a class="col l4" id="gifLink'+i+'"></a>')
-        $a.appendTo('#gif-here')
-        $a.attr('href', url)
+      console.log();
+      // var img = art[i].urlToImage
+      // var title = art[i].title
+      // var url = art[i].url
+      // var description = art[i].description
 
-        // var $img = $('<img class="responsive-image">')
-        // $img.attr('src', gif)
-        // getGif("moon", url)
-      }
-      // var articleURL = data.articles[0].url
-      // articleObj.articleURL = articleURL
-      // submitData(articleURL)
-      // linkGif(article1)
-      }
-  })
-}
+      for (var i = 0; i < art.length-2; i++){
+        var date = Date(art[i].publishedAt)
+        // var month = date.getMonth()
+        // var day = date.getDate()
+        // var year = date.getYear()
+        // var publishedAt = month+"/"+day+"/"+year
+        console.log();
+        console.log();
+        var revealSub = $('<div class="container row">'+
+      '<h1>'+art[i].title+'</h1>'+
+      '<div class="col s12 l8">'+
+      '<div class="border img-container gutter clickMe">'+
+      '<div class="bg-img show" style="background-image: url('+art[i].urlToImage+')">'+
+      '</div>'+
+      '</div><br>'+
+      '</div>'+
+      '<div class="col s12 l4">'+
+      '<div class="border headline-box ">'+
+      '<div class="padding-20"><h5>Description</h5><p>'+art[i].description+'</p>'+
+      '<div id="author-here'+i+'"></div>'+
+      '</div>'+
+      '<div class="header-box flex-row">'+
+      '<h5 class="valign center" style="width: 100%;"><a class="read" href="'+art[i].url+'">read article</a></h5>'+
+      '</div>'+
+      '</div>'+
+      '</div>'+
+      '</div><br><br>'+
+      '<div class="black-line-divider margin">'+
+      '</div><br>')
 
-//url emotion  http://gateway-a.watsonplatform.net/calls/url/URLGetEmotion
-//text emotion http://gateway-a.watsonplatform.net/calls/text/TextGetEmotion
-//combimed call http://gateway-a.watsonplatform.net/calls/text/TextGetCombinedData
-//combined url call http://gateway-a.watsonplatform.net/calls/url/URLGetCombinedData
-//get watson data
-function submitData(input){
-  var urlBase = "http://gateway-a.watsonplatform.net/calls/url/URLGetCombinedData?"
-  var apiKey = "343e1202eb6e7df968370a53ac17261a0c64658c"
-  urlBase = urlBase+"apikey="+apiKey+"&url="+encodeURIComponent(input)+"&outputMode=json"
-  $.ajax({
-    url: urlBase,
-    type: 'POST',
-    success: function(data){
-      var concept = data.concepts[0].text
-      var keyword = data.keywords[0].text
-      articleObj.concept = concept
-      articleObj.keyword = keyword
-      // getGif(concept+" "+keyword)
+        revealSub.appendTo('.img-card-main')
+        author(art[i].author, i)
+        getGifEmotion(art[i].url, i)
+        getGifTitle(art[i].title, i)
+
+      }
+
+
+
     }
   })
 }
 
-//http://api.giphy.com/v1/gifs/translate?s=superman&api_key=dc6zaTOxFJmzC
-//use gify api to get a gif
-function getGif(name){
 
-  $.get("http://api.giphy.com/v1/gifs/translate?s="+name+"&api_key=dc6zaTOxFJmzC", function(e){
-    var gif = e.data.images.original.url
-      var $img = $('<img class="col l4">')
-      $img.attr('src', gif)
-      $('#gifLink0').append($img)
-      console.log($img);
-  })
-  $.get("http://api.giphy.com/v1/gifs/translate?s="+name+"&api_key=dc6zaTOxFJmzC", function(e){
-    var gif = e.data.images.original.url
-      var $img = $('<img class="col l4">')
-      $img.attr('src', gif)
-      $('#gifLink1').append($img)
-      console.log($img);
+
+function author(input, i){
+  if(input === null){
+    console.log();
+  }else {
+    var $author = $("<p>Author: "+input+"</p>")
+    console.log();
+    $author.appendTo('#author-here'+i)
+    console.log();
+  }
+
+}
+
+function getGifEmotion(urlInput, i){
+  console.log();
+  var urlBase = "https://gateway-a.watsonplatform.net/calls/url/URLGetEmotion?"
+  var apiKey = "7f599ecd40daf191a2bceb2c6cf05a4cbf9546a7"
+  urlBase = urlBase+"apikey="+apiKey+"&url="+encodeURIComponent(urlInput)+"&outputMode=json"
+  $.ajax({
+    url: urlBase,
+    type: 'POST',
+    success: function(data){
+      obj = data.docEmotions
+      var emotion = Object.keys(obj).reduce(function(a, b){ return obj[a] > obj[b] ? a : b });
+      emotion = "this makes me feel "+emotion
+
+      console.log(emotion);
+      $.get("https://api.giphy.com/v1/gifs/translate?s="+emotion+"&api_key=dc6zaTOxFJmzC", function(e){
+        gif = e.data.images.original.url
+        var $img = $('<img>')
+        $img.attr('src', gif)
+        // $img.attr('max-width', '100px')
+        $img.attr('class', 'gif')
+        $img.appendTo('#giphy-here'+i)
+        console.log();
+      })
+    }
   })
 }
 
-//display the gif in section below
-// function displayGif(gif, url){
-//   var $a = $('<a id="gifLink"></a>')
-//   $a.attr('href', url)
-//   var $img = $('<img class="col l4">')
-//   $img.attr('src', gif)
-//
-//   console.log($a);
-//   $a.appendTo('#gif-here')
-//   $img.appendTo('#gifLink')
-// }
-
-
-
-
-//search form goes in doc.ready
-// $('form').on('submit', function(event){
-//   event.preventDefault()
-//   var $input = $("textarea")
-//   var input = $input.val()
-//   console.log(input)
-//   submitData(input)
-//   getGif(input)
-//   $('gif').html('')
-// })
+function getGifTitle(title, i){
+  $.get("https://api.giphy.com/v1/gifs/translate?s="+title+"&api_key=dc6zaTOxFJmzC", function(e){
+    gif = e.data.images.original.url
+    var $img = $('<img>')
+    $img.attr('src', gif)
+    // $img.attr('max-width', '30%')
+    $img.attr('class', 'gif')
+    $img.appendTo('#giphy-here'+i)
+    console.log();
+  })
+}
