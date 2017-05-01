@@ -91,7 +91,8 @@ function author(input, i){
 function getGifEmotion(urlInput, i){
   console.log();
   var urlBase = "https://gateway-a.watsonplatform.net/calls/url/URLGetEmotion?"
-  var apiKey = "7f599ecd40daf191a2bceb2c6cf05a4cbf9546a7"
+  // enter Watsone API key here
+  var apiKey = ""
   urlBase = urlBase+"apikey="+apiKey+"&url="+encodeURIComponent(urlInput)+"&outputMode=json"
   $.ajax({
     url: urlBase,
